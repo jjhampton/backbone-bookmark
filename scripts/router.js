@@ -7,7 +7,11 @@ var Router = Backbone.Router.extend({
   },
 
   initialize: function() {
-
+    this.bookmarks = new Backbone.Collection([
+      {title: 'Google', url: 'https://www.google.com'},
+      {title: 'Facebook', url: 'https://www.facebook.com'},
+      {title: 'Yahoo', url: 'https://www.yahoo.com'},
+    ]);
   },
 
   /*
@@ -15,7 +19,9 @@ var Router = Backbone.Router.extend({
   */
 
   index: function() {
-    var bookmarkListView = new BookmarkListView();
+    var bookmarkListView = new BookmarkListView({
+      collection: this.bookmarks
+    });
     $('body').prepend(bookmarkListView.el);
   },
 
