@@ -23,10 +23,12 @@ export default Backbone.View.extend({
 
   saveBookmark: function(event) {
     event.preventDefault();
-    console.log("save button working", this.model.toJSON());
     var title = this.$('.bookmark-title').val();
     var url = this.$('.bookmark-url').val();
-    console.log(title, url);
-
+    this.model.set({
+      title: title,
+      url: url
+    });
+    console.log(this.model.toJSON());
   }
 });
